@@ -1,0 +1,116 @@
+.glass-background {
+    background: url('src/assets/WelcomePage.jpg');
+    background-size: cover;
+  }
+  
+  .card {
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+  }
+  
+  .glassmorphism .card-header {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  
+  .glassmorphism .card-body {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .glassmorphism .btn-primary {
+    background-color: #4CAF50;
+    border: none;
+  }
+  
+  .glassmorphism .btn-primary:hover {
+    background-color: #45a049;
+  }
+  
+  .invalid-feedback {
+    color: #dc3545;
+  }
+  
+  .mt-3 {
+    margin-top: 1rem;
+  }
+  
+  .btn-animated {
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-animated::before {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    width: 60px;
+    height: 120px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.2);
+      opacity: 0;
+    }
+  }
+  
+  .btn-animated:hover {
+    background-color: #ff8b80;
+  }
+  
+  .form-group label {
+    font-size: 16px;
+    color: #333; /* Adjust color as needed */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 8px; /* Add some spacing below the label */
+  }
+  
+  .form-control {
+    font-size: 16px;
+    color: #555; /* Adjust color as needed */
+    border-color: #ccc; /* Adjust border color as needed */
+    border-width: 2px; /* Adjust border width as needed */
+    border-radius: 5px; /* Add some border radius */
+  }
+  
+  .invalid-feedback {
+    font-size: 14px;
+    color: #dc3545; /* Error text color */
+  }
+
+  .card-header {
+    font-size: 16px;
+    color: #333; /* Adjust color as needed */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 8px; /* Add some spacing below the label */
+  }

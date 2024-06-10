@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/"><i class="fas fa-film"></i> MovieBooker</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/register"><i class="fas fa-user-plus"></i> Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container-fluid h-100 glass-background">
+    <div class="row align-items-center justify-content-center h-100">
+      <div class="col-md-4">
+        <div class="card glassmorphism">
+          <div class="card-header">
+            Sign Up
+          </div>
+          <div class="card-body">
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && signupForm.get('firstName')?.errors }">
+                <div *ngIf="submitted && signupForm.get('firstName')?.errors" class="invalid-feedback">
+                  <div *ngIf="signupForm.get('firstName')?.errors?.['required']">First Name is required</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && signupForm.get('lastName')?.errors }">
+                <div *ngIf="submitted && signupForm.get('lastName')?.errors" class="invalid-feedback">
+                  <div *ngIf="signupForm.get('lastName')?.errors?.['required']">Last Name is required</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="emailAddress">Email Address</label>
+                <input type="email" class="form-control" id="emailAddress" formControlName="emailAddress" [ngClass]="{ 'is-invalid': submitted && signupForm.get('emailAddress')?.errors }">
+                <div *ngIf="submitted && signupForm.get('emailAddress')?.errors" class="invalid-feedback">
+                  <div *ngIf="signupForm.get('emailAddress')?.errors?.['required']">Email Address is required</div>
+                  <div *ngIf="signupForm.get('emailAddress')?.errors?.['email']">Email Address is invalid</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" formControlName="username" [ngClass]="{ 'is-invalid': submitted && signupForm.get('username')?.errors }">
+                <div *ngIf="submitted && signupForm.get('username')?.errors" class="invalid-feedback">
+                  <div *ngIf="signupForm.get('username')?.errors?.['required']">Username is required</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && signupForm.get('password')?.errors }">
+                <div *ngIf="submitted && signupForm.get('password')?.errors" class="invalid-feedback">
+                  <div *ngIf="signupForm.get('password')?.errors?.['required']">Password is required</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contactNumber">Contact Number</label>
+                <input type="text" class="form-control" id="contactNumber" formControlName="contactNumber" [ngClass]="{ 'is-invalid': submitted && signupForm.get('contactNumber')?.errors }">
+                <div *ngIf="submitted && signupForm.get('contactNumber')?.errors" class="invalid-feedback">
+                  <div *ngIf="signupForm.get('contactNumber')?.errors?.['required']">Contact Number is required</div>
+                </div>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="isAdmin" formControlName="isAdmin">
+                <label for="isAdmin" class="form-check-label">Is Admin</label>
+              </div>
+              <button type="submit" class="btn btn-animated mt-3">Sign Up</button>
+            </form>
+            <div class="mt-3">
+              <a routerLink="/login">Already have an account? Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

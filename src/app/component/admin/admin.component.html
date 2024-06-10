@@ -1,0 +1,82 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="text-primary">Add Movie</h2>
+      <form [formGroup]="movieForm" (ngSubmit)="onSubmitMovie()" class="movie-form p-3 border rounded shadow-sm bg-light">
+        <div class="form-group mb-3">
+          <label for="movieName">Movie Name</label>
+          <input id="movieName" formControlName="movieName" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="moviePoster">Movie Poster URL</label>
+          <input id="moviePoster" formControlName="moviePoster" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="genre">Genre</label>
+          <input id="genre" formControlName="genre" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="description">Description</label>
+          <textarea id="description" formControlName="description" class="form-control"></textarea>
+        </div>
+        <div class="form-group mb-3">
+          <label for="languages">Languages</label>
+          <input id="languages" formControlName="languages" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-animated w-100">Add Movie</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h2 class="text-primary">Movies</h2>
+      <div class="overflow-auto" style="max-height: 500px;">
+        <div class="row">
+          <div class="col-md-12" *ngFor="let movie of movies">
+            <div class="card mb-3 shadow-sm">
+              <img [src]="movie.moviePoster" class="card-img-top" alt="Movie Poster">
+              <div class="card-body">
+                <h5 class="card-title">{{ movie.movieName }}</h5>
+                <p class="card-text"><strong>Genre:</strong> {{ movie.genre }}</p>
+                <p class="card-text"><strong>Languages:</strong> {{ movie.languages }}</p>
+                <p class="card-text">{{ movie.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-loader [isLoading]="isAddingMovie"></app-loader>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h2 class="text-primary">Add Theater</h2>
+      <form [formGroup]="theaterForm" (ngSubmit)="onSubmitTheater()" class="theater-form p-3 border rounded shadow-sm bg-light">
+        <div class="form-group mb-3">
+          <label for="theaterName">Theater Name</label>
+          <input id="theaterName" formControlName="theaterName" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="city">City</label>
+          <input id="city" formControlName="city" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-animated w-100">Add Theater</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h2 class="text-primary">Theaters</h2>
+      <div class="overflow-auto" style="max-height: 500px;">
+        <div class="row">
+          <div class="col-md-12" *ngFor="let theater of theaters">
+            <div class="card mb-3 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">{{ theater.theaterName }}</h5>
+                <p class="card-text"><strong>City:</strong> {{ theater.city }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-loader [isLoading]="isAddingTheater"></app-loader>
+  </div>
+</div>

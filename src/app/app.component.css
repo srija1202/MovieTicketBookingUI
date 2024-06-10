@@ -1,0 +1,27 @@
+/* Global body styling */
+body {
+    background: linear-gradient(45deg, #ff7e5f, #feb47b);
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  /* Navbar styling */
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #ffdd57; /* Lighter yellow color on hover */
+  }
+  
+  /* Ensure the container is full width */
+  .container {
+    max-width: 100%;
+  }
+  

@@ -1,0 +1,32 @@
+<div class="container d-flex justify-content-center">
+    <div *ngIf="selectedMovie" class="card selected-movie-details">
+      <img [src]="selectedMovie.moviePoster" alt="{{ selectedMovie.movieName }}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{ selectedMovie.movieName }}</h5>
+        <p class="card-text"><strong>Genre:</strong> {{ selectedMovie.genre }}</p>
+        <p class="card-text"><strong>Languages:</strong> {{ selectedMovie.languages }}</p>
+        <p class="card-text"><strong>Description:</strong> {{ selectedMovie.description }}</p>
+  
+        <div class="form-group">
+          <label for="theater">Select Theater:</label>
+          <select class="form-control" id="theater" [(ngModel)]="selectedTheater">
+            <option *ngFor="let theater of theaters" [value]="theater.id">{{ theater.theaterName }} - {{ theater.city }}</option>
+          </select>
+        </div>
+  
+        <div class="ticket-booking">
+          <p>Tickets: 
+            <button class="btn btn-sm btn-primary" (click)="decrementTicketCount()">
+                <fa-icon [icon]="['fas', 'minus']"></fa-icon>
+              </button>
+              <span>{{ ticketCount }}</span>
+              <button class="btn btn-sm btn-primary" (click)="incrementTicketCount()">
+                <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+              </button>
+          </p>
+          <button class="btn btn-primary" [disabled]="ticketCount === 0" (click)="bookTicket()">Book Tickets</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

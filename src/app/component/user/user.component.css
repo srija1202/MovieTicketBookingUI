@@ -1,0 +1,125 @@
+/* Define styles for the container */
+.container {
+    margin-top: 20px;
+  }
+  
+  /* Define styles for movie cards */
+  .movie-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Define styles for card images */
+  .card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  
+  /* Define styles for card body */
+  .card-body {
+    background-color: #f8f9fa; /* Light gray background */
+  }
+  
+  /* Define styles for card title */
+  .card-title {
+    font-size: 1.25rem;
+    color: #333; /* Dark gray color */
+    font-weight: bold;
+  }
+  
+  /* Define styles for card text */
+  .card-text {
+    color: #666; /* Medium gray color */
+  }
+  
+  /* Define styles for book button */
+  .book-button {
+    background-color: #007bff; /* Blue color */
+    border: none;
+    color: #fff; /* White color */
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Define hover effect for book button */
+  .book-button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+  }
+  
+  /* Animation styles */
+.btn-animated {
+  background-color: #ff6f61;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-animated::before {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  width: 60px;
+  height: 120px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  animation: pulse 1.5s infinite;
+}
+.btn-animated {
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-animated::before {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    width: 60px;
+    height: 120px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.2);
+      opacity: 0;
+    }
+  }
+  
+  .btn-animated:hover {
+    background-color: #ff8b80;
+  }
