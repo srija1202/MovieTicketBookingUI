@@ -16,6 +16,9 @@
           <a class="nav-link" routerLink="/ticket"><i class="fas fa-ticket-alt"></i> Ticket Book</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" routerLink="/forget-password"><i class="fas fa-key"></i> Forget Password</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
           <a class="nav-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </li>
       </ul>

@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -6,6 +6,7 @@ import { ApiResponse } from '../Models/api-response';
 import { jwtDecode, JwtDecodeOptions } from 'jwt-decode';
 import { JwtPayload } from '../Models/jwt-payload';
 import { User } from '../Models/user';
+import { password } from '../Models/update-password';
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +18,21 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  // Helper method to get headers with authorization token
+  private getHeaders(): HttpHeaders {
+    const token = this.token;
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` // Include token in the headers
+    });
+  }
+
   login(data: any): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(`${this.baseUrl}/Authentication/Login`, data);
+  }
+
+  updatePassword (data : password): Observable<ApiResponse> {
+    return this.http.patch<ApiResponse>(`${this.baseUrl}/Customer/update/password`, data, { headers: this.getHeaders() })
   }
 
   logout() {

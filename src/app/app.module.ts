@@ -16,6 +16,7 @@ import { LoaderComponent } from './component/loader/loader.component';
 import { TicketComponent } from './component/ticket/ticket.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
     AdminComponent,
     UserComponent,
     LoaderComponent,
-    TicketComponent
+    TicketComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

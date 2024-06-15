@@ -7,6 +7,7 @@ import { AuthGuard } from './Guard/auth.guard';
 import { WelcomePageComponent } from './component/welcome-page/welcome-page.component';
 import { AdminComponent } from './component/admin/admin.component'; // Import AdminComponent for admin route
 import { TicketComponent } from './component/ticket/ticket.component';
+import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
 
 const routes: Routes = [
   {
@@ -40,8 +41,11 @@ const routes: Routes = [
     path: 'ticket/:userId',
     component: TicketComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path : 'forget-password',
+    component : ForgetPasswordComponent
   }
-
 ];
 
 @NgModule({
