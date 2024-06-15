@@ -17,6 +17,8 @@ import { TicketComponent } from './component/ticket/ticket.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
+import { TicketPopupComponent } from './component/ticket-popup/ticket-popup.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ForgetPasswordComponent } from './component/forget-password/forget-pass
     UserComponent,
     LoaderComponent,
     TicketComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    TicketPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { ForgetPasswordComponent } from './component/forget-password/forget-pass
     BrowserAnimationsModule,
     FormsModule,
     FontAwesomeModule,
+    NgbModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

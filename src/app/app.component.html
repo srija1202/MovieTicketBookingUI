@@ -13,7 +13,7 @@
           <a class="nav-link" routerLink="/register"><i class="fas fa-user-plus"></i> Sign Up</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn() && !isAdmin">
-          <a class="nav-link" routerLink="/ticket"><i class="fas fa-ticket-alt"></i> Ticket Book</a>
+          <a class="nav-link" (click)="openTicketPopup()"><i class="fas fa-ticket-alt"></i> Ticket Book</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn()">
           <a class="nav-link" routerLink="/forget-password"><i class="fas fa-key"></i> Forget Password</a>
