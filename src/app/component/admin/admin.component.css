@@ -1,4 +1,3 @@
-/* Global styles */
 body {
   background: linear-gradient(135deg, #FFB6C1, #FF69B4, #FF00FF, #BA55D3, #9370DB);
   background-size: 600% 600%;
@@ -39,8 +38,12 @@ body {
 
 /* Card styles */
 .card {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .card-header {

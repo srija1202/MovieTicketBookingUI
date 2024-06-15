@@ -6,7 +6,7 @@ export interface Ticket {
     ticketId: string;
     totalCount: number;
     theatreId: string;
-    theatre: Theatre;
+    theater: Theatre;
     movieId: string;
     movie: Movie;
     userId: string;

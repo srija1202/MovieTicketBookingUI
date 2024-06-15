@@ -1,26 +1,47 @@
 <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title">Tickets Booked</h4>
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="card">
-        <div class="card-body">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" *ngFor="let ticket of tickets">
-              <h5 class="card-title">{{ ticket.movie.movieName }}</h5>
-              <p class="card-text"><strong>Theater:</strong> {{ ticket.theatre.theaterName }}</p>
-              <p class="card-text"><strong>Ticket Booked:</strong> {{ ticket.totalCount }}</p>
-              <button class="btn btn-primary" (click)="editTicketCount(ticket)">Edit</button>
-            </li>
-          </ul>
-        </div>
+  <div class="modal-header">
+    <h4 class="modal-title">Tickets Booked</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let ticket of tickets">
+            <h5 class="card-title">{{ ticket.movie.movieName }}</h5>
+            <p class="card-text"><strong>Theater:</strong> {{ ticket.theater.theaterName }}</p>
+            <p class="card-text"><strong>Ticket Booked:</strong> {{ ticket.totalCount }}</p>
+            <button class="btn btn-animated" (click)="editTicketCount(ticket)">Edit</button>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Close</button>
-    </div>
   </div>
-  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-animated" (click)="activeModal.dismiss()">Close</button>
+  </div>
+</div>
+
+<!-- Modal for editing ticket count -->
+<ng-template #editTicketModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Edit Ticket Count</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="ticketCount">Ticket Count</label>
+        <input type="number" id="ticketCount" class="form-control" [(ngModel)]="newTicketCount" name="ticketCount" min="0">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-animated" (click)="modal.dismiss('Cancel click')">Cancel</button>
+    <button type="button" class="btn btn-animated" (click)="saveTicketCount()">Save</button>
+  </div>
+</ng-template>

@@ -1,49 +1,62 @@
 .hero-section {
-    background-image: url('src/assets/welcomepage1.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-  }
-  
-  .hero-content {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 50px;
-    border-radius: 10px;
-  }
-  
-  .search-bar {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  
-  .search-bar input {
-    border-radius: 30px;
-    padding: 10px 20px;
-  }
-  
-  .search-bar button {
-    border-radius: 30px;
-    padding: 10px 20px;
-  }
-  
-  .card img {
-    height: 800px;
-    object-fit: cover;
-  }
-  
-  .card-title {
-    font-weight: bold;
-  }
-  
-  footer a {
-    font-size: 1.5rem;
-    transition: color 0.3s;
-  }
-  
-  footer a:hover {
-    color: #ff5733;
-  }
-  
-  .container {
-    max-width: 100%;
-  }  
+  background-image: url('src/assets/welcomepage1.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 50px;
+  border-radius: 10px;
+}
+.card img {
+  height: 500px;
+  object-fit: cover;
+}
+.card-title {
+  font-weight: bold;
+}
+footer a {
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+footer a:hover {
+  color: #ff5733;
+}
+.container {
+  max-width: 100%;
+}
+.text-center {
+  text-align: center;
+}
+.text-white {
+  color: white;
+}
+.d-flex {
+  display: flex;
+}
+.align-items-center {
+  align-items: center;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.display-3 {
+  font-size: 4.5rem;
+}
+.lead {
+  font-size: 1.25rem;
+}
+.mt-4 {
+  margin-top: 1.5rem;
+}
+.mt-5 {
+  margin-top: 3rem;
+}
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+.mb-5 {
+  margin-bottom: 3rem;
+}
