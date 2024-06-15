@@ -31,10 +31,17 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate: [AuthGuard] // Protect admin route with AuthGuard
   },
-  { path: 'ticket/:id', 
-  component: TicketComponent,
-  canActivate: [AuthGuard]
+  { 
+    path: 'ticket/:id',
+    component: TicketComponent,
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'ticket/:userId',
+    component: TicketComponent,
+    canActivate: [AuthGuard]
   }
+
 ];
 
 @NgModule({

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from 'src/app/Models/movie';
@@ -35,11 +36,6 @@ export class TicketComponent implements OnInit {
     });
   }
 
-  onTheaterChange(): void {
-    // Implement logic when theater selection changes
-    // For example, you can fetch additional information about the selected theater
-  }
-
   incrementTicketCount(): void {
     // Increment ticket count
     this.ticketCount++;
@@ -59,8 +55,27 @@ export class TicketComponent implements OnInit {
   }
 
   bookTicket(): void {
-    // Implement logic to book the ticket
-    console.log('Ticket booked for movie:', this.selectedMovie, 'at theater:', this.selectedTheater, 'with ticket count:', this.ticketCount);
-    // You can add further logic here, such as sending a request to a backend API to book the ticket
+    if (this.isTicketBookingValid()) {
+      const bookingPayload = {
+        ticketsCount: this.ticketCount,
+        movieId: this.selectedMovie?.id,
+        theaterId: this.selectedTheater,
+      };
+  
+      this.theatreService.bookTicket(bookingPayload).subscribe({
+        next: (response) => {
+          console.log('Booking successful:', response);
+          // Add any additional logic or user feedback here
+        },
+        error: (err: HttpErrorResponse) => {
+          console.error('Booking failed:', err);
+          // Handle the error, e.g., show an error message to the user
+        }
+      });
+    } else {
+      console.log('Invalid booking attempt');
+      // Optionally, show a validation error message to the user
+    }
   }
+  
 }

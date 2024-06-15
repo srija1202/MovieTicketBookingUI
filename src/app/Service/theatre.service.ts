@@ -35,4 +35,8 @@ export class TheatreService {
   addTheatre(theaterData: Theatre): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(`${environment.apiBaseUrl}/Theater/Add`, theaterData, { headers: this.getHeaders() }); 
   }
+
+  bookTicket(bookingPayload: any): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${environment.apiBaseUrl}/Booking/Book`, bookingPayload, { headers: this.getHeaders() });
+  }
 }

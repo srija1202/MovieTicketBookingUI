@@ -63,4 +63,42 @@
   .selected-movie-details .ticket-booking .btn-primary:hover {
     background-color: #0056b3; /* Darker blue color on hover */
   }
-  
+
+  /* CSS for custom select */
+.custom-select-wrapper {
+  position: relative;
+}
+
+.theater-select {
+  -webkit-appearance: none; /* Remove default arrow for Webkit/Blink */
+  -moz-appearance: none; /* Remove default arrow for Firefox */
+  appearance: none; /* Remove default arrow */
+  background: url('data:image/svg+xml;utf8,<svg fill="%23000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right center;
+  background-size: 1em;
+  padding-right: 2.5em; /* Adjust padding to fit the icon */
+  background-color: #e0e0e0; /* Light grey background */
+  border: 1px solid #ced4da; /* Light grey border */
+  border-radius: 0.25em; /* Rounded corners */
+  width: 100%; /* Full width */
+  height: calc(1.5em + .75rem + 2px); /* Height to match form control */
+}
+
+.theater-select:focus {
+  outline: none; /* Remove focus outline */
+}
+
+.form-control {
+  font-size: 1rem; /* Ensure consistent font size */
+  line-height: 1.5; /* Consistent line height */
+}
+
+.custom-select-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 1.25rem; /* Adjust right position to fit your design */
+  width: 1em;
+  height: 1em;
+  pointer-events: none;
+  transform: translateY(-50%);
+} 
