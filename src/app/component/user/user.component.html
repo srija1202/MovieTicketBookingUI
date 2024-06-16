@@ -4,10 +4,10 @@
       <div class="card mb-4 movie-card">
         <img class="card-img-top" src="{{ movie.moviePoster }}" alt="{{ movie.movieName }}">
         <div class="card-body">
-          <h5 class="card-title">{{ movie.movieName }}</h5>
-          <p class="card-text">{{ movie.description }}</p>
-          <p class="card-text">{{ movie.genre }}</p>
-          <p class="card-text">{{ movie.languages }}</p>
+          <h5 class="card-title"><strong>Movie Name: </strong>{{ movie.movieName }}</h5>
+          <p class="card-text"><strong>Description: </strong>{{ movie.description }}</p>
+          <p class="card-text"><strong>Genre: </strong>{{ movie.genre }}</p>
+          <p class="card-text"><strong>Language: </strong>{{ movie.languages }}</p>
           <button class="btn btn-animated" (click)="bookTicket(movie.id)">Book Tickets</button>
         </div>
       </div>

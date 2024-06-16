@@ -12,13 +12,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AdminComponent } from './component/admin/admin.component';
 import { UserComponent } from './component/user/user.component';
-import { LoaderComponent } from './component/loader/loader.component';
 import { TicketComponent } from './component/ticket/ticket.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
 import { TicketPopupComponent } from './component/ticket-popup/ticket-popup.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -28,7 +27,6 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
         WelcomePageComponent,
         AdminComponent,
         UserComponent,
-        LoaderComponent,
         TicketComponent,
         ForgetPasswordComponent,
         TicketPopupComponent
@@ -39,5 +37,6 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
         BrowserAnimationsModule,
         FormsModule,
         FontAwesomeModule,
+        MatSnackBarModule,
         NgbModalModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

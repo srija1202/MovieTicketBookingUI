@@ -12,7 +12,7 @@
         <li class="nav-item" *ngIf="!isLoggedIn()">
           <a class="nav-link" routerLink="/register"><i class="fas fa-user-plus"></i> Sign Up</a>
         </li>
-        <li class="nav-item" *ngIf="isLoggedIn() && !isAdmin">
+        <li class="nav-item" *ngIf="isLoggedIn() && !isAdmin()">
           <a class="nav-link" (click)="openTicketPopup()"><i class="fas fa-ticket"></i> Ticket Book</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn()">

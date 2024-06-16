@@ -1,22 +1,3 @@
-body {
-  background: linear-gradient(135deg, #FFB6C1, #FF69B4, #FF00FF, #BA55D3, #9370DB);
-  background-size: 600% 600%;
-  animation: gradientAnimation 15s ease infinite;
-  font-family: 'Arial', sans-serif;
-}
-
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
-}
-
 /* Container styles */
 .container {
   margin-top: 20px;
@@ -24,11 +5,13 @@ body {
 
 /* Form styles */
 .movie-form, .theater-form {
-  background-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   padding: 20px;
+  color: #333;
 }
 
 .movie-form h2, .theater-form h2 {
@@ -38,7 +21,7 @@ body {
 
 /* Card styles */
 .card {
-  background-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 15px;
@@ -53,13 +36,17 @@ body {
   margin-bottom: 8px;
 }
 
+/* Adjust the card image size */
 .card-img-top {
+  max-height: 200px; /* Set max height for images */
+  max-width: 100%; /* Ensure the image covers the width */
+  object-fit: contain; /* Ensure the whole image is visible */
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
 
 .card-body {
-  background-color: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .card-title {
@@ -69,17 +56,6 @@ body {
 
 .card-text {
   color: #666;
-}
-
-/* Button styles */
-.btn-primary {
-  background-color: #4CAF50;
-  border: none;
-  transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-  background-color: #45a049;
 }
 
 /* Input styles */
@@ -150,4 +126,37 @@ body {
 .invalid-feedback {
   font-size: 14px;
   color: #dc3545;
+}
+
+/* Scrollbar styles */
+.overflow-auto {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* For Chrome, Safari, and Opera */
+.overflow-auto::-webkit-scrollbar {
+  width: 8px;
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+/* For Firefox */
+.overflow-auto {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(255, 255, 255, 0.15);
+}
+
+/* Adjustments for better appearance */
+.overflow-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
 }

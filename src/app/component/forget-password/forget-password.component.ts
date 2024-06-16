@@ -1,4 +1,3 @@
-// forget-password.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -23,6 +22,7 @@ export class ForgetPasswordComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Initialize the form with validators for username, oldPassword, newPassword, and confirmPassword
     this.resetPasswordForm = this.formBuilder.group({
       username: ['', Validators.required],
       oldPassword: ['', Validators.required],
@@ -31,6 +31,12 @@ export class ForgetPasswordComponent implements OnInit {
     }, { validator: this.mustMatch('newPassword', 'confirmPassword') });
   }
 
+  /**
+   * Custom validator function to ensure newPassword and confirmPassword fields match.
+   * @param controlName The name of the newPassword form control.
+   * @param matchingControlName The name of the confirmPassword form control.
+   * @returns Validator function for newPassword and confirmPassword match.
+   */
   mustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];
@@ -48,31 +54,43 @@ export class ForgetPasswordComponent implements OnInit {
     };
   }
 
+  /**
+   * Getter for easy access to form control fields.
+   * Helps in accessing form controls in the template.
+   * @returns Object containing form control fields.
+   */
   get formControls() {
     return this.resetPasswordForm.controls;
   }
 
+  /**
+   * Handles form submission for updating the password.
+   * Submits the form data to AuthService for password update.
+   * Navigates to login page upon successful password update.
+   * Displays error message if password update fails.
+   */
   onSubmit(): void {
     this.submitted = true;
 
     if (this.resetPasswordForm.invalid) {
       return;
     }
+
     const passwordData = this.resetPasswordForm.value as password;
+
     this.authService.updatePassword(passwordData).subscribe({
       next: (response: ApiResponse) => {
-        if(response.isSuccess) {
+        if (response.isSuccess) {
           console.log('Password updated successfully', response);
           this.router.navigate(['/login']);
-        }
-        else {
-          alert(response.message);
+        } else {
+          alert(response.message); // Display alert with error message from response
         }
       },
       error: (err: HttpErrorResponse) => {
         this.submitted = false;
         console.error('Error while updating password', err);
-        alert(err.error.message);
+        alert(err.error.message); // Display alert with error message from HTTP response
       }
     });
   }

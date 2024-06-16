@@ -11,6 +11,11 @@ export class BookingService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Sends a POST request to book tickets for a movie.
+   * @param data Object containing booking details such as ticketsCount, movieId, and theaterId.
+   * @returns Observable<ApiResponse> with booking response data.
+   */
   bookTicket(data: any): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(`${environment.apiBaseUrl}/Booking/Book`, data);
   }

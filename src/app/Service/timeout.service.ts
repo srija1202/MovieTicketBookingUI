@@ -1,44 +1,50 @@
 import { Injectable } from '@angular/core';
-import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
-import { Keepalive } from '@ng-idle/keepalive';
 import { Router } from '@angular/router';
+import { Subject, timer } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TimeoutService {
+  private readonly SESSION_TIMEOUT = 120; // 30 minutes in seconds
+  private timeoutTimer$ = timer(this.SESSION_TIMEOUT * 1000);
+  private destroy$ = new Subject<void>();
 
-  constructor(private idle: Idle, private keepalive: Keepalive, private router: Router) { }
-
-  initTimeout() {
-    // Set idle timeout to 15 minutes (900 seconds)
-    this.idle.setIdle(900);
-    // Set timeout warning time to 1 minute (60 seconds)
-    this.idle.setTimeout(60);
-    // Use default interrupts (mousemove, keydown, scroll)
-    this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
-
-    // Start watching for user activity
-    this.idle.watch();
-
-    // Handle timeout warning
-    this.idle.onTimeoutWarning.subscribe((countdown) => {
-      console.log('Timeout warning', countdown);
-      // You can display a warning to the user here
-    });
-
-    // Handle timeout
-    this.idle.onTimeout.subscribe(() => {
-      console.log('Timeout reached');
-      // Perform logout action
-      this.logout();
-    });
+  constructor(private router: Router, private authService: AuthService) {
+    this.initTimeout();
   }
 
-  logout() {
-    // Clear any user session data (e.g., token, user info)
-    localStorage.removeItem('token');
-    // Redirect to the login page
-    this.router.navigate(['/login']);
+  /**
+   * Initializes the session timeout timer.
+   * When the timer expires, it calls authService.logout() to log the user out.
+   */
+  private initTimeout(): void {
+    this.timeoutTimer$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.authService.logout();
+      });
+  }
+
+  /**
+   * Resets the session timeout timer.
+   * Stops the current timer, creates a new timer, and initializes it.
+   */
+  resetTimer(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.timeoutTimer$ = timer(this.SESSION_TIMEOUT * 1000);
+    this.initTimeout();
+  }
+
+  /**
+   * Cleans up resources when the service is destroyed.
+   * Completes the destroy$ Subject to unsubscribe from the timer observable.
+   */
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

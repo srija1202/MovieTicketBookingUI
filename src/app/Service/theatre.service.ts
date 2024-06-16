@@ -25,17 +25,37 @@ export class TheatreService {
     });
   }
 
+  /**
+   * Retrieves all theatres from the server.
+   * @returns Observable<Theatre[]> with an array of theatres.
+   */
   getTheatre(): Observable<Theatre[]> {
     return this.http.get<Theatre[]>(`${environment.apiBaseUrl}/Theater/Get/All`, { headers: this.getHeaders() });
   }
+
+  /**
+   * Retrieves a specific theatre by its ID from the server.
+   * @param _id ID of the theatre to retrieve.
+   * @returns Observable<Theatre> with the retrieved theatre.
+   */
   getTheatreById(_id: string): Observable<Theatre> {
     return this.http.get<Theatre>(`${environment.apiBaseUrl}/Theater/Get/${_id}`, { headers: this.getHeaders() });
   }
 
+  /**
+   * Adds a new theatre to the server.
+   * @param theaterData Theatre object containing details of the theatre to be added.
+   * @returns Observable<ApiResponse> indicating success or failure of the operation.
+   */
   addTheatre(theaterData: Theatre): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(`${environment.apiBaseUrl}/Theater/Add`, theaterData, { headers: this.getHeaders() }); 
   }
 
+  /**
+   * Books tickets for a movie in a specific theatre.
+   * @param bookingPayload Object containing tickets count, movie ID, and theatre ID for booking.
+   * @returns Observable<ApiResponse> indicating success or failure of the ticket booking.
+   */
   bookTicket(bookingPayload: any): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(`${environment.apiBaseUrl}/Booking/Book`, bookingPayload, { headers: this.getHeaders() });
   }

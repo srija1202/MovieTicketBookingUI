@@ -11,27 +11,40 @@ import { TicketPopupComponent } from './component/ticket-popup/ticket-popup.comp
 })
 export class AppComponent {
   title = 'MovieTicketBookingUI';
-  isAdmin: boolean = false; // Initialize isAdmin based on the user's role
 
   constructor(private authService: AuthService, private router: Router, private modalService: NgbModal) { }
 
-  ngOnInit(): void {
-    // Check user role when component initializes
-    const userRole = this.authService.getUserRole();
-    this.isAdmin = userRole === 'Admin'; // Adjust based on your actual role value
-  }
-
-  // Example method to check if user is logged in
+  /**
+   * Checks if the user is logged in.
+   * @returns True if the user is logged in, false otherwise.
+   */
   isLoggedIn(): boolean {
     return this.authService.loggedIn;
   }
 
+  /**
+   * Checks if the logged-in user has admin role.
+   * @returns True if the user has admin role, false otherwise.
+   */
+  isAdmin(): boolean {
+    const userRole = this.authService.getUserRole();
+    return userRole === 'Admin'; // Adjust based on your actual role value
+  }
+
+  /**
+   * Logs out the current user.
+   * Navigates to the home page after logout.
+   */
   logout(): void {
     this.authService.logout();
   }
 
+  /**
+   * Opens a ticket popup modal for booking tickets.
+   * Adjusts the modal size as needed ('lg' for large).
+   */
   openTicketPopup() {
-    const modalRef = this.modalService.open(TicketPopupComponent, { size: 'lg' }); // 'lg' for large size, adjust as needed
-    // Pass any necessary data to the popup component here if needed
+    const modalRef = this.modalService.open(TicketPopupComponent, { size: 'lg' });
+    // Optionally pass any necessary data to the popup component here
   }
 }

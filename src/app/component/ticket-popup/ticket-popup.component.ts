@@ -1,8 +1,10 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TicketService } from 'src/app/Service/ticket.service';
 import { Ticket } from 'src/app/Models/ticket';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiResponse } from 'src/app/Models/api-response';
+import { TimeoutService } from 'src/app/Service/timeout.service';
 
 @Component({
   selector: 'app-ticket-popup',
@@ -19,7 +21,9 @@ export class TicketPopupComponent implements OnInit {
   constructor(
     private ticketService: TicketService,
     private modalService: NgbModal,
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal,
+    private snackBar: MatSnackBar,
+    private timeoutService: TimeoutService
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +36,10 @@ export class TicketPopupComponent implements OnInit {
         this.tickets = tickets;
       },
       error => {
-        console.error('Error fetching tickets:', error);
+        this.snackBar.open('Failed to load tickets', 'Close', {
+          duration: 3000,
+          panelClass: ['error-snackbar']
+        });
       }
     );
   }
@@ -57,14 +64,39 @@ export class TicketPopupComponent implements OnInit {
           if (response.isSuccess) {
             this.loadTickets();
             this.modalService.dismissAll();
+            this.snackBar.open('Ticket count updated successfully!', 'Close', {
+              duration: 3000,
+              panelClass: ['success-snackbar']
+            });
+          } else {
+            this.snackBar.open('Failed to update ticket count', 'Close', {
+              duration: 3000,
+              panelClass: ['error-snackbar']
+            });
           }
         },
         error: (error: any) => {
-          console.error('Ticket update failed:', error);
+          this.snackBar.open('An error occurred while updating the ticket count', 'Close', {
+            duration: 3000,
+            panelClass: ['error-snackbar']
+          });
         }
       });
     } else {
-      alert('Invalid input. Please enter a valid number.');
+      this.snackBar.open('Please enter a valid ticket count', 'Close', {
+        duration: 3000,
+        panelClass: ['error-snackbar']
+      });
     }
+  }
+
+  ngOnDestroy() {
+    // Clean up event listeners
+    window.removeEventListener('mousemove', () => this.resetTimeout());
+    window.removeEventListener('keydown', () => this.resetTimeout());
+  }
+
+  resetTimeout(): void {
+    this.timeoutService.resetTimer();
   }
 }

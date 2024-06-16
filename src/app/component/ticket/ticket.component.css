@@ -1,70 +1,79 @@
-/* Center the card horizontally */
+/* Center the card horizontally and vertically */
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Optionally, set a height to center vertically */
-  }
-  
-  .selected-movie-details {
-    max-width: 400px; /* Adjust the maximum width of the card as needed */
-  }
-  
-  /* Style the card */
-  .selected-movie-details .card-img-top {
-    border-radius: 15px 15px 0 0;
-  }
-  
-  .selected-movie-details .card-body {
-    background-color: #f8f9fa; /* Light gray background */
-  }
-  
-  .selected-movie-details .card-title {
-    font-size: 1.25rem;
-    color: #333; /* Dark gray color */
-    font-weight: bold;
-  }
-  
-  .selected-movie-details .card-text {
-    color: #666; /* Medium gray color */
-  }
-  
-  /* Style the form group */
-  .selected-movie-details .form-group label {
-    font-size: 16px;
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 8px;
-  }
-  
-  .selected-movie-details .form-control {
-    font-size: 16px;
-    color: #555;
-    border-color: #ccc;
-    border-width: 2px;
-    border-radius: 5px;
-  }
-  
-  /* Style the ticket booking section */
-  .selected-movie-details .ticket-booking {
-    margin-top: 20px;
-  }
-  
-  .selected-movie-details .ticket-booking .btn-primary {
-    background-color: #007bff; /* Blue color */
-    border: none;
-    color: #fff; /* White color */
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .selected-movie-details .ticket-booking .btn-primary:hover {
-    background-color: #0056b3; /* Darker blue color on hover */
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height for vertical centering */
+}
 
-  /* CSS for custom select */
+/* Style the selected movie details card */
+.selected-movie-details {
+  max-width: 400px; /* Adjust the maximum width of the card as needed */
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Blur effect */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px; /* Add some padding */
+  margin: 20px; /* Add some margin */
+}
+
+.selected-movie-details .card-img-top {
+  border-radius: 15px 15px 0 0;
+}
+
+.selected-movie-details .card-body {
+  background: rgba(248, 249, 250, 0.8); /* Light gray with transparency */
+  border-radius: 0 0 15px 15px;
+  padding: 15px; /* Add padding to the card body */
+}
+
+.selected-movie-details .card-title {
+  font-size: 1.25rem;
+  color: #333; /* Dark gray color */
+  font-weight: bold;
+}
+
+.selected-movie-details .card-text {
+  color: #666; /* Medium gray color */
+}
+
+/* Style the form group */
+.selected-movie-details .form-group label {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.selected-movie-details .form-control {
+  font-size: 16px;
+  color: #555;
+  border-color: #ccc;
+  border-width: 2px;
+  border-radius: 5px;
+}
+
+/* Style the ticket booking section */
+.selected-movie-details .ticket-booking {
+  margin-top: 20px;
+}
+
+.selected-movie-details .ticket-booking .btn-primary {
+  background-color: #007bff; /* Blue color */
+  border: none;
+  color: #fff; /* White color */
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.selected-movie-details .ticket-booking .btn-primary:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
+/* CSS for custom select */
 .custom-select-wrapper {
   position: relative;
 }
@@ -101,4 +110,36 @@
   height: 1em;
   pointer-events: none;
   transform: translateY(-50%);
-} 
+}
+
+/* Ticket count input group */
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-group-prepend, .input-group-append {
+  display: flex;
+}
+
+.input-group .btn {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.input-group .btn:hover {
+  background-color: #0056b3;
+}
+
+.input-group .form-control {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #ced4da;
+  border-left: none;
+  border-right: none;
+}

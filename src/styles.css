@@ -1,4 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    background: linear-gradient(135deg, #FAD0C9, #FFC0CB, #FFDAB9, #E0BBE4, #B2B5E6);
+    background-size: 400% 400%; /* Adjusted background size */
+    animation: gradientAnimation 10s ease infinite; /* Reduced animation duration */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+
+  .success-snackbar {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .error-snackbar {
+    background-color: #f44336;
+    color: #fff;
+  }
+  
