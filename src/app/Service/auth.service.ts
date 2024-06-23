@@ -75,9 +75,15 @@ export class AuthService {
    *          Returns null if no token is found.
    */
   getUserRole(): string | null {
-    if (this.token != null) {
-      let decodedToken: JwtPayload = jwtDecode(this.token);
-      return decodedToken.AccessLevel;
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      try {
+        const decodedToken: JwtPayload = jwtDecode(token);
+        return decodedToken.AccessLevel;
+      } catch (error) {
+        console.error('Invalid token:', error);
+        return null;
+      }
     }
     return null;
   }

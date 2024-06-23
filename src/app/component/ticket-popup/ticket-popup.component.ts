@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, OnDestroy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TicketService } from 'src/app/Service/ticket.service';
 import { Ticket } from 'src/app/Models/ticket';
@@ -11,7 +11,7 @@ import { TimeoutService } from 'src/app/Service/timeout.service';
   templateUrl: './ticket-popup.component.html',
   styleUrls: ['./ticket-popup.component.css']
 })
-export class TicketPopupComponent implements OnInit {
+export class TicketPopupComponent implements OnInit, OnDestroy {
   tickets: Ticket[] = [];
   selectedTicket?: Ticket;
   newTicketCount?: number;
@@ -28,6 +28,10 @@ export class TicketPopupComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadTickets();
+
+    // Add event listeners to reset timeout on user activity
+    window.addEventListener('mousemove', this.resetTimeout.bind(this));
+    window.addEventListener('keydown', this.resetTimeout.bind(this));
   }
 
   loadTickets() {
@@ -92,8 +96,8 @@ export class TicketPopupComponent implements OnInit {
 
   ngOnDestroy() {
     // Clean up event listeners
-    window.removeEventListener('mousemove', () => this.resetTimeout());
-    window.removeEventListener('keydown', () => this.resetTimeout());
+    window.removeEventListener('mousemove', this.resetTimeout.bind(this));
+    window.removeEventListener('keydown', this.resetTimeout.bind(this));
   }
 
   resetTimeout(): void {

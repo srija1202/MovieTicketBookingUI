@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Movie } from 'src/app/Models/movie';
 import { MovieService } from 'src/app/Service/movie.service';
@@ -9,7 +9,7 @@ import { TimeoutService } from 'src/app/Service/timeout.service';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
   movies: Movie[] = [];
 
   constructor(
@@ -23,6 +23,10 @@ export class UserComponent implements OnInit {
     this.movieService.loadMovies().subscribe(movies => {
       this.movies = movies;
     });
+
+    // Add event listeners to reset timeout on user activity
+    window.addEventListener('mousemove', this.resetTimeout.bind(this));
+    window.addEventListener('keydown', this.resetTimeout.bind(this));
   }
 
   /**
@@ -37,8 +41,9 @@ export class UserComponent implements OnInit {
    * Cleans up event listeners to prevent memory leaks when the component is destroyed.
    */
   ngOnDestroy() {
-    window.removeEventListener('mousemove', () => this.resetTimeout());
-    window.removeEventListener('keydown', () => this.resetTimeout());
+    // Remove event listeners to prevent memory leaks
+    window.removeEventListener('mousemove', this.resetTimeout.bind(this));
+    window.removeEventListener('keydown', this.resetTimeout.bind(this));
   }
 
   /**
