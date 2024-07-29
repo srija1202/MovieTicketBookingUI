@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiBaseUrl:  'https://localhost:7017/api/v1'
+  apiBaseUrl:  'https://movieticketbooking-fhbve2d3d0bngmh6.eastus-01.azurewebsites.net/api/v1'
 };
