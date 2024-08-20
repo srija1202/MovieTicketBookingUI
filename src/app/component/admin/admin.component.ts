@@ -83,7 +83,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Handles form submission for adding a movie.
+   * Handles form submission for adding a movies.
    * If the form is valid, sends movie data to the backend.
    */
   onSubmitMovie(): void {
